@@ -120,56 +120,16 @@ export default function App() {
             placeholder="Buscar producto o servicio..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-white border border-green-400 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base shadow-md focus:outline-none focus:ring-2 focus:ring-green-600"
+            className="w-full bg-white border border-green-400 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-gray-900 placeholder-gray-500 text-sm sm:text-base shadow-md focus:outline-none focus:ring-2 focus:ring-green-600"
           />
         </div>
 
-        {/* Hero Section con video de fondo */}
-        <section className="relative w-full overflow-hidden h-[40vh] sm:h-[50vh] md:h-[60vh] mb-12 sm:mb-16">
-          <video
-            className="absolute top-0 left-0 w-full h-full object-cover"
-            src="/videos/hero.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-          <div className="relative z-10 flex flex-col items-center justify-center h-full bg-black/40 text-center px-4 sm:px-6">
-            <h1 className="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-3 drop-shadow-lg">
-              Bienvenido a EcoGestor
-            </h1>
-            <p className="text-xs sm:text-base lg:text-lg text-white max-w-xs sm:max-w-xl mb-4 sm:mb-6">
-              Gestión inteligente de residuos con IoT e IA, impulsando un futuro más sostenible.
-            </p>
-            <a
-              href="#productos"
-              className="inline-block bg-green-600 text-white font-semibold px-4 sm:px-8 py-2 sm:py-3 rounded-full shadow-md hover:bg-green-700 transition duration-300 text-xs sm:text-base"
-            >
-              Ver Productos
-            </a>
-          </div>
-        </section>
-
-        {/* Nueva sección: Video de presentación (reproduce al hacer play) */}
-        <section id="video" className="mb-16 sm:mb-20 px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-700 mb-6 text-center">
-            Conoce EcoGestor en acción
-          </h2>
-          <div className="mx-auto w-full max-w-3xl">
-            <video
-              src="/videos/EcoGestor.mp4"
-              controls
-              className="w-full rounded-xl shadow-lg"
-            />
-          </div>
-        </section>
-
-        {/* Sección Productos */}
+        {/* Sección de resultados de búsqueda: Productos */}
         <section
           id="productos"
-          className="mb-16 sm:mb-20 py-8 sm:py-12 bg-gray-100 rounded-xl px-4 sm:px-6"
+          className="mb-12 sm:mb-16 py-6 sm:py-8 bg-gray-100 rounded-xl px-4 sm:px-6"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-700 mb-6 sm:mb-8 border-b-2 sm:border-b-4 border-green-400 inline-block">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-700 mb-4 sm:mb-6">
             Productos
           </h2>
           {productos.length > 0 ? (
@@ -190,12 +150,12 @@ export default function App() {
           )}
         </section>
 
-        {/* Sección Servicios */}
+        {/* Sección de resultados de búsqueda: Servicios */}
         <section
           id="servicios"
-          className="mb-16 sm:mb-20 py-8 sm:py-12 bg-gray-50 rounded-xl px-4 sm:px-6"
+          className="mb-12 sm:mb-16 py-6 sm:py-8 bg-gray-50 rounded-xl px-4 sm:px-6"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-800 mb-6 sm:mb-8 border-b-2 sm:border-b-4 border-blue-400 inline-block">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-800 mb-4 sm:mb-6">
             Servicios
           </h2>
           {servicios.length > 0 ? (
@@ -214,6 +174,20 @@ export default function App() {
           ) : (
             <p className="text-center text-gray-600 italic">No se encontraron servicios.</p>
           )}
+        </section>
+
+        {/* Sección de Video de presentación (tamaño ajustado al ancho de la página) */}
+        <section id="video" className="mb-16 sm:mb-20 px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-700 mb-6 text-center">
+            Conoce EcoGestor en acción
+          </h2>
+          <div className="mx-auto w-full">
+            <video
+              src="/videos/EcoGestor.mp4"
+              controls
+              className="w-full h-auto rounded-xl shadow-lg"
+            />
+          </div>
         </section>
 
         {/* Sección “Sobre EcoGestor” */}
@@ -273,7 +247,7 @@ export default function App() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="w-full bg-white border border-green-400 rounded-full px-4 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-green-600"
+                className="w-full bg-white border border-green-400 rounded-full px-4 py-2 text-gray-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
             <div>
@@ -286,7 +260,7 @@ export default function App() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-white border border-green-400 rounded-full px-4 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-green-600"
+                className="w-full bg-white border border-green-400 rounded-full px-4 py-2 text-gray-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
             <div>
@@ -299,7 +273,7 @@ export default function App() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="w-full bg-white border border-green-400 rounded-lg px-4 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-green-600"
+                className="w-full bg-white border border-green-400 rounded-lg px-4 py-2 text-gray-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
             <button
