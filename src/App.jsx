@@ -176,7 +176,33 @@ export default function App() {
           )}
         </section>
 
-        {/* Sección de Video de presentación (tamaño ajustado al ancho de la página) */}
+        {/* Hero Section con video de fondo ajustado al viewport */}
+        <section className="relative w-full h-screen overflow-hidden mb-12 sm:mb-16">
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            src="/videos/hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full bg-black/40 text-center px-4 sm:px-6">
+            <h1 className="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-3 drop-shadow-lg">
+              Bienvenido a EcoGestor
+            </h1>
+            <p className="text-xs sm:text-base lg:text-lg text-white max-w-xs sm:max-w-xl mb-4 sm:mb-6">
+              Gestión inteligente de residuos con IoT e IA, impulsando un futuro más sostenible.
+            </p>
+            <a
+              href="#video"
+              className="inline-block bg-green-600 text-white font-semibold px-4 sm:px-8 py-2 sm:py-3 rounded-full shadow-md hover:bg-green-700 transition duration-300 text-xs sm:text-base"
+            >
+              Ver presentación
+            </a>
+          </div>
+        </section>
+
+        {/* Sección de Video de presentación (tamaño ajustado al viewport actual) */}
         <section id="video" className="mb-16 sm:mb-20 px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-700 mb-6 text-center">
             Conoce EcoGestor en acción
@@ -185,7 +211,7 @@ export default function App() {
             <video
               src="/videos/EcoGestor.mp4"
               controls
-              className="w-full h-auto rounded-xl shadow-lg"
+              className="w-full h-screen object-cover rounded-xl shadow-lg"
             />
           </div>
         </section>
