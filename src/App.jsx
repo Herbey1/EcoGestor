@@ -39,7 +39,9 @@ export default function App() {
     setTimeout(() => setSubmitted(false), 3000)
   }
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev)
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev)
+  }
 
   return (
     <div className="bg-white text-gray-900 font-sans">
@@ -53,7 +55,7 @@ export default function App() {
             </h2>
           </div>
 
-          {/* Botón hamburguesa solo en móvil */}
+          {/* Botón hamburguesa (solo visible en pantallas < sm) */}
           <button
             onClick={toggleMenu}
             className="sm:hidden mt-2 text-2xl text-gray-700 hover:text-green-700 focus:outline-none"
@@ -65,14 +67,20 @@ export default function App() {
           {/* Menú de navegación */}
           <nav
             className={`
-              flex flex-col sm:flex-row items-center gap-4 sm:gap-8 font-semibold text-sm sm:text-base
-              ${menuOpen ? "block" : "hidden"} sm:flex
+              ${menuOpen ? "block" : "hidden"} 
+              sm:flex 
+              flex-col sm:flex-row 
+              items-center 
+              gap-4 sm:gap-8 
+              font-semibold 
+              text-sm sm:text-base
             `}
           >
             {["productos", "servicios", "about", "contacto"].map((section) => (
               <a
                 key={section}
                 href={`#${section}`}
+                onClick={() => setMenuOpen(false)} 
                 className="
                   relative group
                   text-gray-700 hover:text-green-700
@@ -179,7 +187,10 @@ export default function App() {
         </section>
 
         {/* Sección “Sobre EcoGestor” */}
-        <section id="about" className="mb-16 sm:mb-20 py-8 sm:py-12 px-4 sm:px-6 text-center">
+        <section
+          id="about"
+          className="mb-16 sm:mb-20 py-8 sm:py-12 px-4 sm:px-6 text-center"
+        >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
             ¿Qué es EcoGestor?
           </h2>
