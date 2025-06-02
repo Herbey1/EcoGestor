@@ -47,48 +47,64 @@ export default function App() {
     <div className="bg-white text-gray-900 font-sans">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Header */}
-        <header className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-12">
-          <div className="flex items-center space-x-2 sm:space-x-4 mb-4 sm:mb-0">
+        <header className="flex items-center justify-between mb-8 sm:mb-12 relative z-30">
+          {/* Logo y nombre */}
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <FaGlobeAmericas className="text-green-700" size={40} />
             <h2 className="text-2xl sm:text-3xl font-extrabold text-green-800 select-none">
               EcoGestor
             </h2>
           </div>
 
-          {/* Botón hamburguesa (solo visible en pantallas < sm) */}
+          {/* Botón hamburguesa (solo en pantallas < sm) */}
           <button
             onClick={toggleMenu}
-            className="sm:hidden mt-2 text-2xl text-gray-700 hover:text-green-700 focus:outline-none"
+            className="sm:hidden text-2xl text-gray-700 hover:text-green-700 focus:outline-none bg-transparent p-2 rounded"
             aria-label="Toggle Menu"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
 
-          {/* Menú de navegación */}
+          {/* Menú horizontal en pantallas ≥ sm */}
+          <nav className="hidden sm:flex items-center space-x-8 font-semibold text-base">
+            {["productos", "servicios", "about", "contacto"].map((section) => (
+              <a
+                key={section}
+                href={`#${section}`}
+                className="
+                  relative group
+                  text-gray-700 hover:text-green-700
+                  after:content-[''] after:absolute after:bottom-0 after:left-0
+                  after:h-0.5 after:w-0 after:bg-green-700
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                "
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            ))}
+          </nav>
+
+          {/* Menú desplegable en pantallas < sm */}
           <nav
             className={`
-              ${menuOpen ? "block" : "hidden"} 
-              sm:flex 
-              flex-col sm:flex-row 
-              items-center 
-              gap-4 sm:gap-8 
-              font-semibold 
-              text-sm sm:text-base
+              absolute top-full left-0 right-0 bg-white shadow-lg
+              transform origin-top transition-transform duration-300
+              ${menuOpen ? "scale-y-100" : "scale-y-0"}
+              sm:hidden flex flex-col items-center space-y-2 py-4
+              font-semibold text-base
             `}
           >
             {["productos", "servicios", "about", "contacto"].map((section) => (
               <a
                 key={section}
                 href={`#${section}`}
-                onClick={() => setMenuOpen(false)} 
+                onClick={() => setMenuOpen(false)}
                 className="
-                  relative group
                   text-gray-700 hover:text-green-700
-                  py-2 sm:py-0
-                  after:content-[''] after:absolute after:bottom-0 after:left-0
-                  after:h-0.5 after:w-0 after:bg-green-700
-                  after:transition-all after:duration-300
-                  hover:after:w-full
+                  px-4 py-2 w-full text-center
+                  border-b last:border-b-0
+                  border-gray-200
                 "
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
