@@ -150,6 +150,20 @@ export default function App() {
           </div>
         </section>
 
+        {/* Nueva sección: Video de presentación (reproduce al hacer play) */}
+        <section id="video" className="mb-16 sm:mb-20 px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-700 mb-6 text-center">
+            Conoce EcoGestor en acción
+          </h2>
+          <div className="mx-auto w-full max-w-3xl">
+            <video
+              src="/videos/EcoGestor.mp4"
+              controls
+              className="w-full rounded-xl shadow-lg"
+            />
+          </div>
+        </section>
+
         {/* Sección Productos */}
         <section
           id="productos"
